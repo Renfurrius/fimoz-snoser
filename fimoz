@@ -85,6 +85,8 @@ def password_prompt():
         return "Ханзи"
     elif password == "renfurriusBH":
         return "Рени"
+    elif password == "Dontknow24":
+        return "Эндрю"
     else:
         print("Неверный пароль!")
         return None
