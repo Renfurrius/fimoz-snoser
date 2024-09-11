@@ -151,7 +151,7 @@ def function_two():
 
 def main_menu(user_name):
     clear_console()
-    print(f"скрипт FIMOZ 2.4 by Tg @renfurius -- Здравствуй, {user_name}!")
+    print(f"FIMOZ 2.4 by Tg @renfurius -- Здравствуй, {user_name}!")
     print("[1] отправка сообщений на почту")
     print("[2] отправка запросов")
     print("[3] редактор")
