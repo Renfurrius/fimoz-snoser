@@ -78,20 +78,83 @@ def gradient_text(text):
         Fore.WHITE,    # Серый (близкий к белому)
     ]
 
-    # Вывод текста с градиентом
-    for i, char in enumerate(text):
-        color = colors[i % len(colors)]
-        print(f"{color}{char}", end='', flush=True)
-        time.sleep(0.05)  # Задержка для эффекта
+import random
+import string
+import time
+import os
+from colorama import Fore, init
 
-    print()  # Перенос строки после завершения
+# Инициализируем colorama
+init(autoreset=True)
+
+def generate_random_email(length=10):
+    letters = string.ascii_lowercase
+    random_string = ''.join(random.choice(letters) for _ in range(length))
+    domains = ['gmail.com', 'outlook.com', 'bk.ru', 'internet.ru', 'yahoo.com']
+    random_domain = random.choice(domains)
+    return f"{random_string}@{random_domain}"
+
+def clear_console():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def fake_loading():
+    print("Загрузка: ", end="", flush=True)
+    for i in range(0):  # Задаем диапазон для воспроизведения эффекта загрузки
+        print("|", end="", flush=True)
+        time.sleep(0.05)
+    print()  # Переход на новую строку
+
+def function_one():
+    count = 0
+    while True:
+        email = input("Введите почту (или 'exit' для выхода): ")
+        if email.lower() == 'exit':
+            break
+        print("Введите сообщение: ")
+        message = input()
+        
+        while True:
+            fake_loading()
+            random_email = generate_random_email()  # Генерация случайной почты
+            
+            # Очищаем экран каждые 5 сообщений и выводим счётчик
+            count += 1
+            if count % 5 == 0:
+                clear_console()
+                print(f"Отправлено {count} сообщений.")
+                
+            print(f"{random_email} - сообщение отправлено: {message}")  # Выводим сообщение
+            
+            time.sleep(0.01)  # Задержка 0.01 секунды
+
+def function_two():
+    count = 0
+    while True:
+        number = input("Введите номер (или 'exit' для выхода): ")
+        if number.lower() == 'exit':
+            break
+
+        while True:
+            fake_loading()
+            random_email = generate_random_email()  # Генерация случайной почты
+
+            # Очищаем экран каждые 5 запросов и выводим счётчик
+            count += 1
+            if count % 5 == 0:
+                clear_console()
+                print(f"Отправлено {count} запросов.")
+
+            print(f"{random_email} - запрос отправлен")  # Выводим сообщение
+
+            time.sleep(0.01)  # Задержка 0.01 секунды
+
 
 def main_menu(user_name):
-    gradient_text("FIMOZ 2.4")
-    gradient_text(f"Привет, {user_name}!")
-    gradient_text("[1] отправка сообщений на почту")
-    gradient_text("[2] отправка запросов")
-    gradient_text("[3] редактор")
+    clear_console()
+    print(f"скрипт FIMOZ 2.4 by Tg @renfurius -- Здравствуй, {user_name}!")
+    print("[1] отправка сообщений на почту")
+    print("[2] отправка запросов")
+    print("[3] редактор")
     
     choice = input("Выберите опцию: ")
     if choice == '1':
