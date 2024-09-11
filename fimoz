@@ -1,0 +1,99 @@
+import random
+import string
+import time
+import os
+
+def generate_random_email(length=10):
+    letters = string.ascii_lowercase
+    random_string = ''.join(random.choice(letters) for _ in range(length))
+    domains = ['gmail.com', 'outlook.com', 'bk.ru', 'internet.ru', 'yahoo.com']
+    random_domain = random.choice(domains)
+    return f"{random_string}@{random_domain}"
+
+def clear_console():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def fake_loading():
+    print("Загрузка: ", end="", flush=True)
+    for i in range(0):
+        print("|", end="", flush=True)
+        time.sleep(0.05)
+    print()  # Переход на новую строку
+
+def function_one():
+    count = 0
+    while True:
+        email = input("Введите почту (или 'exit' для выхода): ")
+        if email.lower() == 'exit':
+            break
+        print("Введите сообщение: ")
+        message = input()
+        
+        while True:
+            fake_loading()
+            random_email = generate_random_email()  # Генерация случайной почты
+            
+            # Очищаем экран каждые 5 сообщений и выводим счётчик
+            count += 1
+            if count % 5 == 0:
+                clear_console()
+                print(f"Отправлено {count} сообщений.")
+                
+            print(f"{random_email} - сообщение отправлено: {message}")  # Выводим сообщение
+            
+            time.sleep(0.01)  # Задержка 0.01 секунды
+def function_two():
+    count = 0
+    while True:
+        number = input("Введите номер (или 'exit' для выхода): ")
+        if number.lower() == 'exit':
+            break
+
+        while True:
+            fake_loading()
+            random_email = generate_random_email()  # Генерация случайной почты
+
+            # Очищаем экран каждые 5 запросов и выводим счётчик
+            count += 1
+            if count % 5 == 0:
+                clear_console()
+                print(f"Отправлено {count} запросов.")
+
+            print(f"{random_email} - запрос отправлен")  # Выводим сообщение
+
+            time.sleep(0.01)  # Задержка 0.01 секунды
+def main_menu(user_name):
+    clear_console()
+    print(f"Привет, {user_name}!")
+    print("[1] отправка сообщений на почту")
+    print("[2] отправка запросов")
+    print("[3] редактор")
+    
+    choice = input("Выберите опцию: ")
+    if choice == '1':
+        function_one()
+    elif choice == '2':
+        function_two()
+    elif choice == '3':
+        print("Редактор пока недоступен.")
+    else:
+        print("Неверный выбор! Попробуйте снова.")
+
+def password_prompt():
+    password = input("Введите пароль: ")
+    if password == "fimozik":
+        return "Ханзи"
+    elif password == "renfurriusBH":
+        return "Рени"
+    else:
+        print("Неверный пароль!")
+        return None
+
+def main():
+    user_name = password_prompt()
+    if user_name:
+        time.sleep(5)
+        main_menu(user_name)
+
+if __name__ == "__main__":
+    main()
