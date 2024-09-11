@@ -62,12 +62,29 @@ def function_two():
             print(f"{random_email} - запрос отправлен")  # Выводим сообщение
 
             time.sleep(0.01)  # Задержка 0.01 секунды
-def main_menu(user_name):
-    clear_console()
-    print(f"Привет, {user_name}!")
-    print("[1] отправка сообщений на почту")
-    print("[2] отправка запросов")
-    print("[3] редактор")
+def gradient_text(text):
+    # Цвета от фиолетового до серого
+    colors = [
+        Fore.MAGENTA,  # Фиолетовый
+        Fore.LIGHTMAGENTA_EX,
+        Fore.LIGHTRED_EX,
+        Fore.LIGHTWHITE_EX,
+        Fore.WHITE,    # Серый (близкий к белому)
+    ]
+
+    # Вывод текста с градиентом
+    for i, char in enumerate(text):
+        color = colors[i % len(colors)]
+        print(f"{color}{char}", end='', flush=True)
+        time.sleep(0.05)  # Задержка для эффекта
+
+    print()  # Перенос строки после завершения
+
+gradient_text("FIMOZ 2.4")
+gradient_text(f"Привет, {user_name}!")
+gradient_text("[1] отправка сообщений на почту")
+gradient_text("[2] отправка запросов")
+gradient_text("[3] редактор")
     
     choice = input("Выберите опцию: ")
     if choice == '1':
