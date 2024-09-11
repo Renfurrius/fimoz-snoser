@@ -19,7 +19,7 @@ def clear_console():
 
 def fake_loading():
     print("Загрузка: ", end="", flush=True)
-    for i in range(5):  # Задаем диапазон для воспроизведения эффекта загрузки
+    for i in range(0):  # Задаем диапазон для воспроизведения эффекта загрузки
         print("|", end="", flush=True)
         time.sleep(0.05)
     print()  # Переход на новую строку
